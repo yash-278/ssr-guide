@@ -19,8 +19,8 @@ function App() {
     // Provide the client to your App
     <QueryClientProvider client={queryClient}>
       <div className="App">
-        <div className="w-full grid grid-cols-2 place-items-center">
-          <a href="https://vitejs.dev" target="_blank">
+        <div className="w-full grid grid-cols-2 place-items-stretch">
+          <a href="https://vitejs.dev" target="_blank" className="place-self-end">
             <img src="/vite.svg" className="logo" alt="Vite logo" />
           </a>
           <a href="https://reactjs.org" target="_blank">
