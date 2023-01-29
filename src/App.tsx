@@ -1,40 +1,30 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
 import "./App.css";
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Navbar from "./components/Navbar/Navbar.component";
 
 // Create a client
 const queryClient = new QueryClient();
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     // Provide the client to your App
     <QueryClientProvider client={queryClient}>
-      <div className="App">
-        <div className="w-full grid grid-cols-2 place-items-stretch">
-          <a href="https://vitejs.dev" target="_blank" className="place-self-end">
-            <img src="/vite.svg" className="logo" alt="Vite logo" />
-          </a>
-          <a href="https://reactjs.org" target="_blank">
-            <img src={reactLogo} className="logo react" alt="React logo" />
-          </a>
+      <div className="App bg-mirage h-screen overflow-y-hidden">
+        <Navbar />
+        <div className="h-full bg-hero-bg bg-cover bg-bottom">
+          <div className="bg-mirage h-full bg-opacity-90 text-white">
+            <div className="absolute top-1/2 -translate-y-1/2 mx-10 uppercase font-bold italic">
+              <h1 className="tracking-wide text-3xl md:text-4xl">WELCOME</h1>
+              <p className="my-3 text-sm md:text-base">
+                This is a Fan-made Guide project for Static Shift Racing & is still Work in
+                Progress.
+              </p>
+              <p className="text-sm md:text-base">
+                Please be patient for the upcoming updates regarding the guide.
+              </p>
+            </div>
+          </div>
         </div>
-        <h1>Vite + React</h1>
-        <div className="card">
-          <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-          <p className="mt-10">
-            Static Shift Racing Guide is under construction. Please check back later.
-          </p>
-        </div>
-        <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
       </div>
     </QueryClientProvider>
   );
