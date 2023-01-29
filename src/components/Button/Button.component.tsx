@@ -1,14 +1,11 @@
 import { ReactNode } from "react";
 
-const Button = ({
-  text,
-  icon,
-  type,
-}: {
-  text: string;
+interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+  text?: string;
   icon?: ReactNode;
-  type: "Primary" | "Secondary";
-}) => {
+  type: "Primary" | "Secondary" | "Icon" | "Icon Danger";
+}
+const Button = ({ text, icon, type, className, ...props }: ButtonProps): JSX.Element | null => {
   const buttonSlanted = {
     transform: "skewX(-12deg)",
   };
@@ -21,7 +18,8 @@ const Button = ({
     case "Primary":
       return (
         <button
-          className="bg-blue-dianne px-7 py-1 border-2 border-jade flex items-center space-x-1"
+          {...props}
+          className={`bg-blue-dianne px-7 py-1 border-2 border-jade flex items-center space-x-1 ${className}`}
           style={buttonSlanted}
         >
           {icon}
@@ -36,7 +34,8 @@ const Button = ({
     case "Secondary":
       return (
         <button
-          className="bg-spring-green px-7 py-1 border-2 border-jade flex items-center space-x-1"
+          {...props}
+          className={`bg-spring-green px-7 py-1 border-2 border-jade flex items-center space-x-1 ${className}`}
           style={buttonSlanted}
         >
           {icon}
@@ -46,6 +45,27 @@ const Button = ({
           >
             {text}
           </span>
+        </button>
+      );
+    case "Icon":
+      return (
+        <button
+          {...props}
+          className={`bg-spring-green px-4 py-1 border-2 border-jade flex items-center space-x-1 ${className}`}
+          style={buttonSlanted}
+        >
+          {icon}
+        </button>
+      );
+
+    case "Icon Danger":
+      return (
+        <button
+          {...props}
+          className={`bg-red-600 px-4 py-1 border-2 flex items-center space-x-1 ${className}`}
+          style={buttonSlanted}
+        >
+          {icon}
         </button>
       );
 
